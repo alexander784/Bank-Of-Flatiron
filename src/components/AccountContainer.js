@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import SearchBar from "SearchBar";
+import SearchBar from "./SearchBar";
 
 function AccountContainer() {
         state = {Transactions : [], SearchBar: "", select: "all"}
@@ -13,6 +13,8 @@ function AccountContainer() {
                 })
             })
         })
+
+        //add new list of transaction
 
         addTransactionFun = (addTransaction) => {
             this.setstate(prevState => {
@@ -28,4 +30,6 @@ function AccountContainer() {
     
 
     }
+
+    export default AccountContainer;
 
