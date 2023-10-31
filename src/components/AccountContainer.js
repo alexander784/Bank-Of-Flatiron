@@ -24,6 +24,20 @@ function AccountContainer() {
             })
         }
 
+        //function to delete transactions
+
+        deleteTransactionFun = (deletedTransaction) => {
+            let newTransArr = this.state.trasactions.filter(transaction => {
+                return transaction.id !== deletedTransaction.id
+
+            })
+            this.setState({
+                transactions: newTransArr
+            })
+        }
+
+
+
 
     
 
