@@ -49,6 +49,15 @@ function AccountContainer() {
             })
         }
 
+        //filter transactions
+        filterSearchTransactions = () => {
+            let {transactions, search, select} = this.state
+
+            let filtersearch = transactions.filter(transaction => {
+                return transaction.desrciption.toLowercase().includes(search.toLowecase())
+            })
+        }
+
 
 
 
