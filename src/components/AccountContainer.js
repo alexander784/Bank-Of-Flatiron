@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import SearchBar from "./SearchBar";
+import { render } from "@testing-library/react";
 
 function AccountContainer() {
         state = {Transactions : [], SearchBar: "", select: "all"}
@@ -13,7 +14,7 @@ function AccountContainer() {
                 })
             })
         })
-
+b
         //add new list of transaction
 
         addTransactionFun = (addTransaction) => {
@@ -107,6 +108,24 @@ function AccountContainer() {
           }
         }
       
+        functionSearchBar (
+
+        
+            // return (
+                <div>
+                    <SearchBar
+                    searchValue={this.state.search}
+                    searchFun={this.searchFun}
+                    />
+
+                    <addTransactionForm
+                    addTransactionFun = {this.addTransactionFun}
+                    />
+
+                </div>
+            )
+        
+        
 
 
 
