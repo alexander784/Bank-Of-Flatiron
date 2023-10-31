@@ -37,6 +37,19 @@ function AccountContainer() {
         }
 
 
+        searchFun = (searchResult) => {
+            this.setState({
+                search:searchResult
+            })
+        }
+
+        selectFun = (selectedResult) => {
+            this.setState({
+                select:selectedResult
+            })
+        }
+
+
 
 
     
