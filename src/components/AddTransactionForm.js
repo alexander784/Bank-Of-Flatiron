@@ -12,8 +12,10 @@ class AddTransactionForm extends Component {
   }
 
   handleSubmit = (evt) => {
+    //Prevent default form submission behavior
     evt.preventDefault();
     fetch('http://localhost:6001/transactions', {
+      //POST a request to server eith form data
       method: "POST",
       headers: {
         'content-type': 'application/json'
@@ -27,6 +29,7 @@ class AddTransactionForm extends Component {
     })
     .then(r => r.json())
     .then(addTransaction => {
+      //call the prop function with the response data
       this.props.addTransactionFun(addTransaction);
       this.setState({
         date: "",
@@ -38,6 +41,7 @@ class AddTransactionForm extends Component {
   }
 
   handleChange = (evt) => {
+    //update state using the input
     this.setState({
       [evt.target.name]: evt.target.value
     });
