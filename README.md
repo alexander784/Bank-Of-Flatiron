@@ -11,19 +11,20 @@
 
 
 ## Description:
-<p>An app that tracks your bank Transaction</p>
+<p>An app  trackers that  track your bank Transactions</p>
 
 
 ## Installation
-<p> 1.Git clone this repo from Github<br>
+1. Clone  this repo from Github
 
-2. Run npm install in your terminal to insatll all dependecies.
-3. Run  npm start to run your code in te server. at localhost http://localhost:8001/transactions
+2. Run npm install in your terminal to install all dependecies.
+
+3. Run  npm start to run your code in the server. at localhost http://localhost:8001/transactions
 
 
 ## Usage:
 <p>After setting up the project  explore different sections in th site:
-<li>Add any Recent transacttion you have made.</li>
+<li>Add any Recent transaction you have made.</li>
 <li>Search for a Recent Transaction</li>
 
 
