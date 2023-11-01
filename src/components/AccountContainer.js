@@ -1,140 +1,61 @@
-import React, { useEffect } from "react";
-import SearchBar from "./SearchBar";
-import { render } from "@testing-library/react";
+import React, { Component, useState, useEffect } from "react";
+import TransactionsList from "./TransactionsList";
+import Search from "./Search";
+import AddTransactionForm from "./AddTransactionForm";
 
 function AccountContainer() {
-        state = {Transactions : [], SearchBar: "", select: "all"}
+  const [transactions, setTransactions] = useState([]);
+  const [search, setSearch] = useState("");
+  const [select, setSelect] = useState("all");
 
-        useEffect(() => {
-            fetch('http://localhost:6001/transactions')
-            .then(r => r.json())
-            .then(resp => {
-                this.setstate({
-                    transactions:resp
-                })
-            })
-        })
-b
-        //add new list of transaction
+  useEffect(() => {
+    fetch('http://localhost:6001/transactions')
+      .then((response) => response.json())
+      .then((data) => {
+        setTransactions(data);
+      });
+  }, []);
 
-        addTransactionFun = (addTransaction) => {
-            this.setstate(prevState => {
-                return {
-                    transactions: [...prevState.transactions, addTransaction]
-                }
-            })
-        }
+  const addTransactionFun = (addTransaction) => {
+    setTransactions((prevTransactions) => [...prevTransactions, addTransaction]);
+  };
 
-        //function to delete transactions
+  const deleteTransactionFun = (deletedTransaction) => {
+    const newTransArr = transactions.filter((transaction) => transaction.id !== deletedTransaction.id);
+    setTransactions(newTransArr);
+  };
 
-        deleteTransactionFun = (deletedTransaction) => {
-            let newTransArr = this.state.trasactions.filter(transaction => {
-                return transaction.id !== deletedTransaction.id
+  const searchFun = (searchResult) => {
+    setSearch(searchResult);
+  };
 
-            })
-            this.setState({
-                transactions: newTransArr
-            })
-        }
+  const selectFun = (selectedResult) => {
+    setSelect(selectedResult);
+  };
 
+  const filterSearchTransactions = () => {
+    let filterSearch = transactions.filter((transaction) => {
+      return transaction.description.toLowerCase().includes(search.toLowerCase());
+    });
 
-        searchFun = (searchResult) => {
-            this.setState({
-                search:searchResult
-            })
-        }
+    switch (select) {
+      // Rest of your switch cases
+      default:
+    }
+  };
 
-        selectFun = (selectedResult) => {
-            this.setState({
-                select:selectedResult
-            })
-        }
+  return (
+    <div>
+      <Search searchValue={search} searchFun={searchFun} />
+      <AddTransactionForm addTransactionFun={addTransactionFun} />
+      <TransactionsList
+        transactions={filterSearchTransactions()}
+        select={select}
+        selectFun={selectFun}
+        deleteTransactionFun={deleteTransactionFun}
+      />
+    </div>
+  );
+}
 
-        //filter transactions based on search in description
-        filterSearchTransactions = () => {
-            let {transactions, search, select} = this.state
-
-            let filtersearch = transactions.filter(transaction => {
-                return transaction.desrciption.toLowercase().includes(search.toLowecase())
-            })
-        }
-
-        //Switch statement to filter transaction based on different criteria
-        switch(select){
-            case "all" :
-              return filterSearch
-      
-            case "descriptionUP" : 
-              return filterSearch.sort( (wordA, wordB) => {
-                  return wordA.description.localeCompare(wordB.description)
-              })
-      
-            case "descriptionDOWN" : 
-            return filterSearch.sort( (wordA, wordB) => {
-                return wordB.description.localeCompare(wordA.description)
-            })
-              
-            case "categoryUP" : 
-            return filterSearch.sort( (wordA, wordB) => {
-                return wordA.category.localeCompare(wordB.category)
-            })
-      
-            case "categoryDOWN" : 
-            return filterSearch.sort( (wordA, wordB) => {
-                return wordB.category.localeCompare(wordA.category)
-            })
-      
-            case "amountUP" : 
-            return filterSearch.sort( (numA, numB) => {
-                return numA.amount - numB.amount
-            })
-      
-            case "amountDOWN" : 
-            return filterSearch.sort( (numA, numB) => {
-                return numB.amount - numA.amount
-            })
-      
-            case "dateUP" : 
-            return filterSearch.sort( (numA, numB) => {
-                return new Date(numA.date) - new Date(numB.date)
-            })
-      
-            case "dateDOWN" : 
-            return filterSearch.sort( (numA, numB) => {
-                return new Date(numB.date) - new Date(numA.date)
-            })
-      
-            default:
-          }
-        }
-      
-        functionSearchBar (
-
-        
-            // return (
-                <div>
-                    <SearchBar
-                    searchValue={this.state.search}
-                    searchFun={this.searchFun}
-                    />
-
-                    <addTransactionForm
-                    addTransactionFun = {this.addTransactionFun}
-                    />
-
-                </div>
-            )
-        
-        
-
-
-
-
-    
-
-    
-
-    
-
-    export default AccountContainer;
-
+export default AccountContainer;
