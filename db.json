@@ -1,13 +1,6 @@
 {
   "transactions": [
     {
-      "id": 1,
-      "date": "2019-12-01",
-      "description": "Paycheck from Bob's Burgers",
-      "category": "Income",
-      "amount": 1000
-    },
-    {
       "id": 2,
       "date": "2019-12-01",
       "description": "South by Southwest Quinoa Bowl at Fresh & Co",
@@ -92,13 +85,32 @@
       "id": 13
     },
     {
-      "date": "2022-07-09",
-      "description": "Office lunch Wednesday",
-      "category": "Food",
-      "amount": "3000",
+      "date": "",
+      "description": "",
+      "category": "",
+      "amount": "",
       "id": 14
+    },
+    {
+      "date": "",
+      "description": "",
+      "category": "",
+      "amount": "",
+      "id": 15
+    },
+    {
+      "date": "2023-11-02",
+      "description": "School fee",
+      "category": "Fee",
+      "amount": "4000",
+      "id": 16
+    },
+    {
+      "date": "",
+      "description": "",
+      "category": "",
+      "amount": "",
+      "id": 17
     }
   ]
- }
- 
- 
+}

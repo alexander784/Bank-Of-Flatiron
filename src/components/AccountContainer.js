@@ -4,9 +4,12 @@ import Search from "./Search";
 import AddTransactionForm from "./AddTransactionForm";
 
 function AccountContainer() {
+  //store list of transactions
   const [transactions, setTransactions] = useState([]);
   const [search, setSearch] = useState("");
   const [select, setSelect] = useState("all");
+
+  //fetch Transactions using Hooks
 
   useEffect(() => {
     fetch('http://localhost:6001/transactions')
@@ -15,16 +18,18 @@ function AccountContainer() {
         setTransactions(data);
       });
   }, []);
-
+//add new transactions to the existing list 
   const addTransactionFun = (addTransaction) => {
     setTransactions((prevTransactions) => [...prevTransactions, addTransaction]);
   };
 
+
+// Filter Transactions to create new Array 
   const deleteTransactionFun = (deletedTransaction) => {
     const newTransArr = transactions.filter((transaction) => transaction.id !== deletedTransaction.id);
-    setTransactions(newTransArr);
+    setTransactions(newTransArr); // update transations with new array
   };
-
+// Update new 'search state with new search result
   const searchFun = (searchResult) => {
     setSearch(searchResult);
   };
