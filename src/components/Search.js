@@ -1,4 +1,3 @@
-import React from "React";
 
 const Search = (props) => {
     let handleChange = (evt) => {

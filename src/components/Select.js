@@ -1,11 +1,10 @@
-import React from "React";
 
 
 const Select = (props) => {
     let handleSelect = (evt) => {
         props.selectFun(evt.terget.value)
     }
-}
+
 
 return (
     <div>
@@ -22,6 +21,7 @@ return (
       </select>
     </div>
    )
+}
  
  
  export default Select;

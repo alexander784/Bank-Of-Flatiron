@@ -40,6 +40,49 @@ function AccountContainer() {
 
     switch (select) {
       // Rest of your switch cases
+      case "all" :
+        return filterSearch
+
+      case "descriptionUP" : 
+        return filterSearch.sort( (wordA, wordB) => {
+            return wordA.description.localeCompare(wordB.description)
+        })
+
+      case "descriptionDOWN" : 
+      return filterSearch.sort( (wordA, wordB) => {
+          return wordB.description.localeCompare(wordA.description)
+      })
+        
+      case "categoryUP" : 
+      return filterSearch.sort( (wordA, wordB) => {
+          return wordA.category.localeCompare(wordB.category)
+      })
+
+      case "categoryDOWN" : 
+      return filterSearch.sort( (wordA, wordB) => {
+          return wordB.category.localeCompare(wordA.category)
+      })
+
+      case "amountUP" : 
+      return filterSearch.sort( (numA, numB) => {
+          return numA.amount - numB.amount
+      })
+
+      case "amountDOWN" : 
+      return filterSearch.sort( (numA, numB) => {
+          return numB.amount - numA.amount
+      })
+
+      case "dateUP" : 
+      return filterSearch.sort( (numA, numB) => {
+          return new Date(numA.date) - new Date(numB.date)
+      })
+
+      case "dateDOWN" : 
+      return filterSearch.sort( (numA, numB) => {
+          return new Date(numB.date) - new Date(numA.date)
+      })
+
       default:
     }
   };
