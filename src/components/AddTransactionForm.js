@@ -1,10 +1,18 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 
-//class function
-state = { date:"", description:"", category:"",amount:""}
+class AddTransactionForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      date: "",
+      description: "",
+      category: "",
+      amount: ""
+    };
+  }
 
-handleSubmit = (evt) => {
-    evt.preventDefault()
+  handleSubmit = (evt) => {
+    evt.preventDefault();
     fetch('http://localhost:6001/transactions', {
       method: "POST",
       headers: {
@@ -19,46 +27,44 @@ handleSubmit = (evt) => {
     })
     .then(r => r.json())
     .then(addTransaction => {
-      this.props.addTransactionFun(addTransaction)
+      this.props.addTransactionFun(addTransaction);
       this.setState({
         date: "",
         description: "",
         category: "",
         amount: ""
-      })
-    })
+      });
+    });
+  }
 
-}
-
-handleChange = (evt) => {
+  handleChange = (evt) => {
     this.setState({
-        [evt.target.name] : evt.target.value
-    })
-}
+      [evt.target.name]: evt.target.value
+    });
+  }
 
-render() {
-
+  render() {
     return (
       <div className="ui segment">
         <form className="ui form" onSubmit={this.handleSubmit}>
           <div className="inline fields">
-            <input 
-              type="date" 
-              name="date" 
+            <input
+              type="date"
+              name="date"
               value={this.state.date}
               onChange={this.handleChange}
             />
-            <input 
-              type="text" 
-              name="description" 
-              placeholder="Description" 
+            <input
+              type="text"
+              name="description"
+              placeholder="Description"
               value={this.state.description}
               onChange={this.handleChange}
             />
-            <input 
-              type="text" 
-              name="category" 
-              placeholder="Category" 
+            <input
+              type="text"
+              name="category"
+              placeholder="Category"
               value={this.state.category}
               onChange={this.handleChange}
             />
@@ -71,7 +77,7 @@ render() {
               onChange={this.handleChange}
             />
           </div>
-          <button className="ui button" type="submit" > 
+          <button className="ui button" type="submit">
             Add Transaction
           </button>
         </form>
@@ -80,11 +86,4 @@ render() {
   }
 }
 
-export default addTransactionForm;
-
-
-
-
-
-
-      
+export default AddTransactionForm;
